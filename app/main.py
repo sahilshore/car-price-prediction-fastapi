@@ -1,0 +1,21 @@
+from fastapi import FastAPI
+from prometheus_fastapi_instrumentator import Instrumentator
+from app.api import routes_predict, routes_auth
+from app.middleware.logging_middleware import LoggingMiddleware
+from app.core.exceptions import register_exception_handlers
+
+app = FastAPI(title="Car Price Prediction API", version="1.0.0")
+
+# link the middeware
+app.add_middleware(LoggingMiddleware)
+
+# link endpoints
+app.include_router(routes_auth.router, tags=["Auth"])
+app.include_router(routes_predict.router, tags=["Prediction"])
+
+# Monitoring and metrics using Prometheus
+
+Instrumentator().instrument(app).expose(app)
+
+# add exception handlers
+register_exception_handlers(app)
