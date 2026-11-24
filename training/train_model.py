@@ -8,7 +8,7 @@ from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.impute import SimpleImputer
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.metrics import mean_absolute_error, r2_score,root_mean_squared_error
+from sklearn.metrics import mean_absolute_error, r2_score
 from training.train_utils import DATA_FILE_PATH, MODEL_PATH, MODEL_DIR
 df = (
     pd

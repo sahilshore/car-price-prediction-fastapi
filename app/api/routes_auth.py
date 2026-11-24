@@ -2,13 +2,13 @@ from fastapi import APIRouter
 from pydantic import BaseModel
 from app.core.security import create_token
 
-rounter = APIRouter()
+router = APIRouter()
 
 class AuthInput(BaseModel):
     username: str
     password: str
 
-@rounter.post("/login")
+@router.post("/login")
 def login(auth: AuthInput):
     # Replace these with your actual authentication logic
     if (auth.username == "admin") and (auth.password == "admin"):

@@ -6,6 +6,10 @@ from app.core.exceptions import register_exception_handlers
 
 app = FastAPI(title="Car Price Prediction API", version="1.0.0")
 
+@app.get("/")
+def root():
+    return {"message": "Car Price Prediction API is running"}
+
 # link the middeware
 app.add_middleware(LoggingMiddleware)
 
